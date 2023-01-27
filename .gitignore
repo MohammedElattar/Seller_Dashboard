@@ -1,4 +1,4 @@
 /node_modules/
 /vendor/
-dashboard/
+# dashboard/
 composer.json
