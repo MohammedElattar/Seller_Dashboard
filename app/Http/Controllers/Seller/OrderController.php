@@ -84,7 +84,7 @@ class OrderController extends Controller
 
         $shipping_address = ShippingAddress::find($order->shipping_address);
 
-        return view('seller-views.order.order-details', compact('shipping_address', 'order', 'delivery_men', 'shipping_method'));
+        return view('seller-views.order._order-details', compact('shipping_address', 'order', 'delivery_men', 'shipping_method'));
     }
 
     public function add_delivery_man($order_id, $delivery_man_id)

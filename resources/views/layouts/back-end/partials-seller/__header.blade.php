@@ -122,7 +122,7 @@
                     </span>
                 @endif
             </button>
-            <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+            <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton" style="text-align: inherit;">
 
                 {{-- Start Account Settings --}}
                 @if(auth('seller')->user())

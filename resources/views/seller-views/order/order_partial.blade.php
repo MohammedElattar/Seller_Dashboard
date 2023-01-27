@@ -333,7 +333,6 @@
                                     <label
                                         class="badge badge-sa-success">{{\App\CPU\translate($order->order_status == 'delivered' ? 'delivered' : 'confirmed')}}</label>
                                 @elseif($order->order_status=='returned')
-                                Undefined1
                                     <label
                                         class="badge badge-sa-danger">{{ \App\CPU\translate('returned') }}</label>
                                 @else
@@ -341,7 +340,7 @@
                                         class="badge badge-sa-danger">{{$order['order_status']}}</label>
                                 @endif
                             </td>
-                        
+
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-sa-muted btn-sm" type="button" id="order-context-menu-0"
@@ -353,24 +352,12 @@
                                         </path>
                                     </svg>
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="order-context-menu-0">
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="order-context-menu-0" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                                     <li>
-                                        <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item"href="{{route('seller.orders.details',[$order['id']])}}">{{\App\CPU\translate('view')}}</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">Duplicate</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Add tag</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Remove tag</a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider" />
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item text-danger" href="#">Delete</a>
+                                        <a class="dropdown-item"  href="{{route('seller.orders.generate-invoice',[$order['id']])}}">{{\App\CPU\translate('invoice')}}</a>
                                     </li>
                                 </ul>
                             </div>
