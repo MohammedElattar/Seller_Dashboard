@@ -1699,4 +1699,6 @@
   'Orders Deliveries' => 'Orders Deliveries',
   'share' => 'Share',
   'product_infomation' => 'Product infomation',
+  'Services Order' => 'Services Order',
+  'notes' => 'Notes',
 );
