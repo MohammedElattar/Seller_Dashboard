@@ -1685,4 +1685,7 @@
   'Are you sure delete this ?' => 'Are you sure delete this  ',
   'Yes, delete it!' => 'Yes  delete it!',
   'Shipping Method deleted successfully' => 'Shipping Method deleted successfully',
+  'service_code_sku' => 'Service code sku',
+  'Service price' => 'Service price',
+  'Upload_service_images' => 'Upload service images',
 );
