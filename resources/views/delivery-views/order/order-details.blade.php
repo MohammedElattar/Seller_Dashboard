@@ -269,7 +269,7 @@
                                                     alt="Image">
                                                 <p class="sellerName">
                                                     <a style="color: black;"
-                                                    href="#">{{ $shop->name}}</a>
+                                                    href="{{route('admin-delivery.sellers.view',$detail->seller_id)}}">{{ $shop->name}}</a>
                                                     <i class="tio tio-info-outined ml-4" data-toggle="collapse"
                                                     style="font-size: 20px; cursor: pointer"
                                                     data-target="#sellerInfoCollapse-{{ $detail->id }}"
@@ -295,7 +295,7 @@
                                                     <div class="col-6">
                                                         <h5>{{\App\CPU\translate('name')}} : <a
                                                                 class="text-dark"
-                                                                href="#">{{ $seller['shop']!=null?$seller['shop']->name:'' }}</a>
+                                                                href="{{ route('admin-delivery.sellers.view', [$seller['id']]) }}">{{ $seller['shop']!=null?$seller['shop']->name:'' }}</a>
                                                         </h5>
                                                         <h5>{{\App\CPU\translate('Phone')}} : <a
                                                                 class="text-dark"

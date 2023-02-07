@@ -223,16 +223,6 @@ ion-icon {
 @endif
 
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-928K0YRN83"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-928K0YRN83');
-</script>
-
 <header class="box-shadow-sm rtl" style=" font-weight: bold !important;">
     <!-- Topbar-->
     <div class="topbar">
@@ -405,20 +395,30 @@ ion-icon {
                             {{-- <div class="dropdown-menu dropdown-menu-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}" aria-labelledby="dropdownMenuButton"
                                  style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                                   <a class="dropdown-item" href="{{route('seller.auth.login')}}">
-                                                  <i class="fa fa-sign-in {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i>  {{ \App\CPU\translate('Seller')}}  {{\App\CPU\translate('Login')}}
+                                                  <i class="fa fa-sign-in {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i>  {{ \App\CPU\translate('Seller')}}  {{\App\CPU\translate('signin')}}
                                             </a>
                                 <div class="dropdown-divider"></div> --}}
                                 {{-- <a class="dropdown-item" href="{{route('customer.auth.sign-up')}}">
-                                    <i class="fa fa-user-circle {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i>{{\App\CPU\translate('Customer sign_up')}}
+                                    <i class="fa fa-user-circle {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i>{{\App\CPU\translate('sign_up')}}
                                 </a> --}}
                                  {{-- <a class="dropdown-item" href="{{route('customer.auth.login')}}">
-                                    <i class="fa fa-sign-in {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i> {{\App\CPU\translate('Customer Login')}}
+                                    <i class="fa fa-sign-in {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i> {{\App\CPU\translate('sign_in')}}
                                 </a>
                             </div> --}}
                         {{-- {{-- </div> --}}
                     @endif
+                    @auth('customer')
                     <div id="cart_items">
                         @include('layouts.front-end.partials.cart')
+                    </div>
+                    @endauth
+                    <div class="navbar-tool dropdown {{Session::get('direction') === "rtl" ? 'mr-3' : 'ml-3'}}">
+                        <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="#">
+                            <span class="navbar-tool-label">
+                                <span class="countWishlist">{{\App\Model\Traffic::count()}}</span>
+                           </span>
+                            <i class="navbar-tool-icon czi-eye"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -719,7 +719,7 @@ ion-icon {
                                                 {{ \App\CPU\translate('Seller Sign Up')}}
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="{{route('customer.auth.sign-up')}}">
+                                            <a class="dropdown-item" href="{{route('customer.auth.login')}}">
                                                 {{ \App\CPU\translate('customer Sign Up')}}
                                             </a>
                                         </div>
@@ -736,7 +736,7 @@ ion-icon {
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                                              style="min-width: 165px !important; text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                                             <a class="dropdown-item" href="{{route('seller.auth.login')}}">
-                                                 {{ \App\CPU\translate('seller Sign In')}}
+                                                {{ \App\CPU\translate('seller Sign In')}}
                                             </a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="{{route('customer.auth.login')}}">

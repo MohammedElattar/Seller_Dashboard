@@ -42,9 +42,6 @@
             text-align: center;
             border-right-style: none;
         }
-        input{
-            border-radius: 50px !important;
-        }
     </style>
 </head>
 

@@ -2,6 +2,15 @@
 
 @section('title',ucfirst($data['data_from']).' products')
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-928K0YRN83"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-928K0YRN83');
+</script>
 @push('css_or_js')
     <meta property="og:image" content="{{asset('storage/app/public/company')}}/{{$web_config['web_logo']}}"/>
     <meta property="og:title" content="Products of {{$web_config['name']}} "/>

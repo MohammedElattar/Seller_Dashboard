@@ -41,6 +41,16 @@
               content="@foreach(explode(' ',$product['name']) as $keyword) {{$keyword.' , '}} @endforeach">
     @endif
     <meta property="twitter:url" content="{{route('service',[$product->slug])}}">
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-928K0YRN83"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-928K0YRN83');
+</script>
 
     <link rel="stylesheet" href="{{asset('public/assets/front-end/css/product-details.css')}}"/>
     <style>

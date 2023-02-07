@@ -3,39 +3,21 @@
 @push('css_or_js')
 
 <style>
-    /* .card-hover-shadow:hover{
+    .card-hover-shadow:hover{
         filter: drop-shadow(2px 4px 6px #EB7f25) !important;
-    } */
+    }
     .text{
         font-size:24px !important;
-        color: #fff !important;
     }
     .card-title {
         font-size:24px !important;
-        color: #fff !important;
     }
-    [class^="tio-"] {
-        color: #fff !important;
-    }
-    .card[href]:hover .card-header-title, .card[href]:hover .card-title{color:#EB7f25;}
-    .class {
-    background:#dc3545;
+    .class{
+    background:#fff;
     box-shadow: 0 6px 12px rgb(140 152 164 / 8%); 
     border: 0.0625rem solid rgba(231, 234, 243, .7); 
+    border-radius: 0.75rem;
     }
-    .class-1{
-    background:#4fdad7;
-    box-shadow: 0 6px 12px rgb(140 152 164 / 8%); 
-    border: 0.0625rem solid rgba(231, 234, 243, .7); 
-    }
-    .c-1{background-color: #ffc107 !important;}
-    .c-2{background-color: #607d8b !important;}
-    .c-3{background-color: #03a9f4 !important;}
-    .c-4{background-color: #4caf50 !important;}
-    .c-5{background-color: #ff5722 !important;}
-    .c-6{background-color: #cddc39 !important;}
-    .c-7{background-color: #795548 !important;}
-    .c-8{background-color: #9c27b0 !important;}
     .table .thead-light th,.table-align-middle tbody td{font-size:17px;}
     .input-group-merge .input-group-prepend{
             left:4px;
@@ -78,7 +60,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3 mb-lg-5">
                         <!-- Card -->
-                        <a class="card card-hover-shadow c-1 h-100" href="{{route('admin-delivery.orders.list',['pending'])}}" style="background: #FFFFFF">
+                        <a class="card card-hover-shadow h-100" href="{{route('admin-delivery.orders.list',['pending'])}}" style="background: #FFFFFF">
                             <div class="card-body">
                                 <div class="flex-between align-items-center mb-1">
                                     <div style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
@@ -105,7 +87,7 @@
 
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3 mb-lg-5">
                         <!-- Card -->
-                        <a class="card card-hover-shadow c-2 h-100" href="{{route('admin-delivery.orders.list',['confirmed'])}}" style="background: #FFFFFF;">
+                        <a class="card card-hover-shadow h-100" href="{{route('admin-delivery.orders.list',['confirmed'])}}" style="background: #FFFFFF;">
                             <div class="card-body">
                                 <div class="flex-between align-items-center mb-1">
                                     <div style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
@@ -133,7 +115,7 @@
 
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3 mb-lg-5">
                         <!-- Card -->
-                        <a class="card card-hover-shadow c-3 h-100" href="{{route('admin-delivery.orders.list',['processing'])}}" style="background: #FFFFFF">
+                        <a class="card card-hover-shadow h-100" href="{{route('admin-delivery.orders.list',['processing'])}}" style="background: #FFFFFF">
                             <div class="card-body">
                                 <div class="flex-between align-items-center gx-2 mb-1">
                                     <div style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
@@ -161,7 +143,7 @@
 
                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3 mb-lg-5">
                         <!-- Card -->
-                        <a class="card card-hover-shadow c-4 h-100" href="{{route('admin-delivery.orders.list',['out_for_delivery'])}}" style="background: #FFFFFFff">
+                        <a class="card card-hover-shadow h-100" href="{{route('admin-delivery.orders.list',['out_for_delivery'])}}" style="background: #FFFFFFff">
                             <div class="card-body">
                                 <div class="flex-between align-items-center gx-2 mb-1">
                                     <div style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
@@ -187,105 +169,112 @@
                         <!-- End Card -->
                     </div>
 
-                    <div class="col-lg-6 col-md-6 col-sm-12 mb-3 mb-lg-5">
-                        <div class="card-body card-hover-shadow c-5 flex-between align-items-center" style="cursor: pointer; background:#fff; box-shadow: 0 6px 12px rgb(140 152 164 / 8%); border: 0.0625rem solid rgba(231, 234, 243, .7); border-radius: 0.75rem;"
-                            onclick="location.href='{{route('admin-delivery.orders.list',['delivered'])}}'">
-                            <div class="media-body" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                                <h6 class="card-subtitle text">{{\App\CPU\translate('delivered')}}</h6>
-                                <span class="card-title h3">
-                                    {{\App\Model\Order::when(session()->has('show_inhouse_orders') && session('show_inhouse_orders') == 1,function($q){
-                                        $q->whereHas('details', function ($query) {
-                                            $query->whereHas('product', function ($query) {
-                                            $query->where('added_by', 'admin');
-                                            });
-                                        });
-                                    })->where('order_type','default_type')->where(['order_status'=>'delivered'])->count()}}
-                                </span>
-                            </div>
-                            <div>
-                                <span class="icon icon-sm icon-soft-secondary icon-circle ml-3">
-                                    <i style="color: #EB7F25; font-size:50px !important;" class="tio-checkmark-circle-outlined"></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="d-lg-none">
-                            <hr>
-                        </div>
-                    </div>
+                    <div class="col-lg-12">
+                        <div class="card card-body" style="background: #FFFFFF!important;">
+                            <div class="row gx-lg-4">
+                                <div class="col-lg-4 col-md-6 col-sm-12 mb-3 mb-lg-5">
+                                    <div class="card-body card-hover-shadow flex-between align-items-center" style="cursor: pointer; background:#fff; box-shadow: 0 6px 12px rgb(140 152 164 / 8%); border: 0.0625rem solid rgba(231, 234, 243, .7); border-radius: 0.75rem;"
+                                        onclick="location.href='{{route('admin-delivery.orders.list',['delivered'])}}'">
+                                        <div class="media-body" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+                                            <h6 class="card-subtitle text">{{\App\CPU\translate('delivered')}}</h6>
+                                            <span class="card-title h3">
+                                                {{\App\Model\Order::when(session()->has('show_inhouse_orders') && session('show_inhouse_orders') == 1,function($q){
+                                                    $q->whereHas('details', function ($query) {
+                                                        $query->whereHas('product', function ($query) {
+                                                        $query->where('added_by', 'admin');
+                                                        });
+                                                    });
+                                                })->where('order_type','default_type')->where(['order_status'=>'delivered'])->count()}}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="icon icon-sm icon-soft-secondary icon-circle ml-3">
+                                                <i style="color: #EB7F25; font-size:50px !important;" class="tio-checkmark-circle-outlined"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="d-lg-none">
+                                        <hr>
+                                    </div>
+                                </div>
 
-                    <div class="col-lg-6 col-md-6 col-sm-12 mb-3 mb-lg-5">
-                        <div class="card-body card-hover-shadow c-6 flex-between align-items-center" style="cursor: pointer; background:#fff; box-shadow: 0 6px 12px rgb(140 152 164 / 8%); border: 0.0625rem solid rgba(231, 234, 243, .7); border-radius: 0.75rem;"
-                            onclick="location.href='{{route('admin-delivery.orders.list',['canceled'])}}'">
-                            <div class="media-body" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                                <h6 class="card-subtitle text">{{\App\CPU\translate('canceled')}}</h6>
-                                <span class="card-title h3">
-                                    {{\App\Model\Order::when(session()->has('show_inhouse_orders') && session('show_inhouse_orders') == 1,function($q){
-                                        $q->whereHas('details', function ($query) {
-                                            $query->whereHas('product', function ($query) {
-                                            $query->where('added_by', 'admin');
-                                            });
-                                        });
-                                    })->where('order_type','default_type')->where(['order_status'=>'canceled'])->count()}}
-                                </span>
-                            </div>
-                            <span class="icon icon-sm icon-soft-secondary icon-circle ml-3">
-                            <i style="color: #EB7F25; font-size:50px !important;" class="tio-remove-from-trash"></i>
-                            </span>
-                        </div>
-                        <div class="d-lg-none">
-                            <hr>
-                        </div>
-                    </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 mb-3 mb-lg-5">
+                                    <div class="card-body card-hover-shadow flex-between align-items-center" style="cursor: pointer; background:#fff; box-shadow: 0 6px 12px rgb(140 152 164 / 8%); border: 0.0625rem solid rgba(231, 234, 243, .7); border-radius: 0.75rem;"
+                                        onclick="location.href='{{route('admin-delivery.orders.list',['canceled'])}}'">
+                                        <div class="media-body" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+                                            <h6 class="card-subtitle text">{{\App\CPU\translate('canceled')}}</h6>
+                                            <span class="card-title h3">
+                                                {{\App\Model\Order::when(session()->has('show_inhouse_orders') && session('show_inhouse_orders') == 1,function($q){
+                                                    $q->whereHas('details', function ($query) {
+                                                        $query->whereHas('product', function ($query) {
+                                                        $query->where('added_by', 'admin');
+                                                        });
+                                                    });
+                                                })->where('order_type','default_type')->where(['order_status'=>'canceled'])->count()}}
+                                            </span>
+                                        </div>
+                                        <span class="icon icon-sm icon-soft-secondary icon-circle ml-3">
+                                        <i style="color: #EB7F25; font-size:50px !important;" class="tio-remove-from-trash"></i>
+                                        </span>
+                                    </div>
+                                    <div class="d-lg-none">
+                                        <hr>
+                                    </div>
+                                </div>
 
-                    <div class="col-lg-6 col-md-6 col-sm-12 mb-3 mb-lg-5">
-                        <div class="card-body card-hover-shadow c-7 flex-between align-items-center" style="cursor: pointer; background:#fff; box-shadow: 0 6px 12px rgb(140 152 164 / 8%); border: 0.0625rem solid rgba(231, 234, 243, .7); border-radius: 0.75rem;"
-                            onclick="location.href='{{route('admin-delivery.orders.list',['returned'])}}'">
-                            <div class="media-body" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                                <h6 class="card-subtitle text">{{\App\CPU\translate('returned')}}</h6>
-                                <span class="card-title h3">
-                                    {{\App\Model\Order::when(session()->has('show_inhouse_orders') && session('show_inhouse_orders') == 1,function($q){
-                                        $q->whereHas('details', function ($query) {
-                                            $query->whereHas('product', function ($query) {
-                                            $query->where('added_by', 'admin');
-                                            });
-                                        });
-                                    })->where('order_type','default_type')->where(['order_status'=>'returned'])->count()}}
-                                </span>
-                            </div>
-                            <span class="icon icon-sm icon-soft-secondary icon-circle ml-3">
-                            <i style="color: #EB7F25; font-size:50px !important;" class="tio-history"></i>
-                            </span>
-                        </div>
-                        <div class="d-lg-none">
-                            <hr>
-                        </div>
-                    </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 mb-3 mb-lg-5">
+                                    <div class="card-body card-hover-shadow flex-between align-items-center" style="cursor: pointer; background:#fff; box-shadow: 0 6px 12px rgb(140 152 164 / 8%); border: 0.0625rem solid rgba(231, 234, 243, .7); border-radius: 0.75rem;"
+                                        onclick="location.href='{{route('admin-delivery.orders.list',['returned'])}}'">
+                                        <div class="media-body" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+                                            <h6 class="card-subtitle text">{{\App\CPU\translate('returned')}}</h6>
+                                            <span class="card-title h3">
+                                                {{\App\Model\Order::when(session()->has('show_inhouse_orders') && session('show_inhouse_orders') == 1,function($q){
+                                                    $q->whereHas('details', function ($query) {
+                                                        $query->whereHas('product', function ($query) {
+                                                        $query->where('added_by', 'admin');
+                                                        });
+                                                    });
+                                                })->where('order_type','default_type')->where(['order_status'=>'returned'])->count()}}
+                                            </span>
+                                        </div>
+                                        <span class="icon icon-sm icon-soft-secondary icon-circle ml-3">
+                                        <i style="color: #EB7F25; font-size:50px !important;" class="tio-history"></i>
+                                        </span>
+                                    </div>
+                                    <div class="d-lg-none">
+                                        <hr>
+                                    </div>
+                                </div>
 
-                    <div class="col-lg-6 col-md-6 col-sm-12 mb-3 mb-lg-5">
-                        <div class="card-body card-hover-shadow c-8 flex-between align-items-center" style="cursor: pointer; background:#fff; box-shadow: 0 6px 12px rgb(140 152 164 / 8%); border: 0.0625rem solid rgba(231, 234, 243, .7); border-radius: 0.75rem;"
-                            onclick="location.href='{{route('admin-delivery.orders.list',['failed'])}}'">
-                            <div class="media-body" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                                <h6 class="card-subtitle text">{{\App\CPU\translate('failed')}}</h6>
-                                <span
-                                    class="card-title h3">
-                                    {{\App\Model\Order::when(session()->has('show_inhouse_orders') && session('show_inhouse_orders') == 1,function($q){
-                                        $q->whereHas('details', function ($query) {
-                                            $query->whereHas('product', function ($query) {
-                                            $query->where('added_by', 'admin');
-                                            });
-                                        });
-                                    })->where('order_type','default_type')->where(['order_status'=>'failed'])->count()}}
-                                </span>
+                                <div class="col-lg-4 col-md-6 col-sm-12 mb-3 mb-lg-5">
+                                    <div class="card-body card-hover-shadow flex-between align-items-center" style="cursor: pointer; background:#fff; box-shadow: 0 6px 12px rgb(140 152 164 / 8%); border: 0.0625rem solid rgba(231, 234, 243, .7); border-radius: 0.75rem;"
+                                        onclick="location.href='{{route('admin-delivery.orders.list',['failed'])}}'">
+                                        <div class="media-body" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+                                            <h6 class="card-subtitle text">{{\App\CPU\translate('failed')}}</h6>
+                                            <span
+                                                class="card-title h3">
+                                                {{\App\Model\Order::when(session()->has('show_inhouse_orders') && session('show_inhouse_orders') == 1,function($q){
+                                                    $q->whereHas('details', function ($query) {
+                                                        $query->whereHas('product', function ($query) {
+                                                        $query->where('added_by', 'admin');
+                                                        });
+                                                    });
+                                                })->where('order_type','default_type')->where(['order_status'=>'failed'])->count()}}
+                                            </span>
+                                        </div>
+                                        <span class="icon icon-sm icon-soft-secondary icon-circle ml-3">
+                                        <i style="color: #EB7F25; font-size:50px !important;" class="tio-message-failed"></i>
+                                        </span>
+                                    </div>
+                                    <div class="d-lg-none">
+                                        <hr>
+                                    </div>
+                                </div>
                             </div>
-                            <span class="icon icon-sm icon-soft-secondary icon-circle ml-3">
-                            <i style="color: #EB7F25; font-size:50px !important;" class="tio-message-failed"></i>
-                            </span>
+
                         </div>
-                        <div class="d-lg-none">
-                            <hr>
-                        </div>
+
                     </div>
-                    
                 </div>
 
 
@@ -301,8 +290,8 @@
                 <div class="card">
                     <div class="card-body" style="background: #FFFFFF!important;">
                         <div class="row gx-lg-4">
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="card-body flex-between align-items-center class-1" style="cursor: pointer"
+                            <div class="col-lg-7 col-md-6 col-sm-12">
+                                <div class="card-body flex-between align-items-center class" style="cursor: pointer"
                                     onclick="location.href='{{route('admin-delivery.orders.list',['paid'])}}'">
                                     <div class="media-body" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                                         <h6 class="card-subtitle text">{{\App\CPU\translate('paid')}}</h6>
@@ -327,7 +316,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="col-lg-5 col-md-6 col-sm-12">
                                 <div class="card-body flex-between align-items-center class" style="cursor: pointer"
                                     onclick="location.href='{{route('admin-delivery.orders.list',['unpaid'])}}'">
                                     <div class="media-body" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
@@ -390,24 +379,24 @@
             <!-- Header -->
             <div class="card-header">
                 <div class="row flex-between justify-content-between flex-grow-1">
-                    <div class="col-12 col-md-4 p-5">
+                    <div class="col-12 col-md-4">
                         <form action="" method="GET">
                             <!-- Search -->
                             <div class="input-group input-group-merge input-group-flush">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
-                                        <!-- <i class="tio-search" style="color:#fff; margin: -5px; font-size:25px !important;"></i> -->
+                                        <i class="tio-search" style="color:#fff;"></i>
                                     </div>
                                 </div>
                                 <input id="datatableSearch_" type="search" name="search" class="form-control"
-                                    placeholder="{{\App\CPU\translate('Search orders')}}" aria-label="Search orders" value="{{ $search }}"
-                                    required>
-                                <button type="submit" class="btn btn-primary" style=" padding: 12px; font-size: 16px;">{{\App\CPU\translate('search')}}</button>
+                                       placeholder="{{\App\CPU\translate('Search orders')}}" aria-label="Search orders" value="{{ $search }}"
+                                       required>
+                                <button type="submit" class="btn btn-primary" style="width: 25%;">{{\App\CPU\translate('search')}}</button>
                             </div>
                             <!-- End Search -->
                         </form>
                     </div>
-                    <div class="col-12 col-md-5 mt-2 mt-sm-0 p-5">
+                    <div class="col-12 col-md-5 mt-2 mt-sm-0">
                         <form action="{{ url()->current() }}" id="form-data" method="GET">
 
                             <div class="row">
@@ -419,8 +408,8 @@
                                     <input type="date" value="{{$to}}" name="to" id="to_date"
                                             class="form-control">
                                 </div>
-                                <div class="col-12 col-sm-2 mt-2 mt-sm-0 " style="transform: translateX(20px);">
-                                    <button type="submit"style="width: 95px;" class="btn btn-primary float-right float-sm-none" onclick="formUrlChange(this)" data-action="{{ url()->current() }}">
+                                <div class="col-12 col-sm-2 mt-2 mt-sm-0  ">
+                                    <button type="submit" class="btn btn-primary float-right float-sm-none" onclick="formUrlChange(this)" data-action="{{ url()->current() }}">
                                         {{\App\CPU\translate('filter')}}
                                     </button>
                                 </div>
@@ -432,7 +421,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-12 col-md-3 mt-2 mt-md-0 p-5">
+                    <div class="col-12 col-md-3 mt-2 mt-md-0">
                         <div class="float-right">
                             <label> {{\App\CPU\translate('inhouse_orders_only')}} : </label>
                             <label class="switch ml-3">

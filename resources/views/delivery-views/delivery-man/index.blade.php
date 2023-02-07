@@ -6,18 +6,12 @@
 <style>
     input{
             border-radius:50px !important;
-            border:4px solid #e7eaf3 !important;
-            padding: 20px !important;
         }
         button{
     background-color:  #EB7F25 !important;
         border-color:  #EB7F25 !important;
         color: #fff !important;
         font-weight: bold !important;
-}
-#coba{
-    display: flex;
-    justify-content:center;
 }
 </style>
 @endpush

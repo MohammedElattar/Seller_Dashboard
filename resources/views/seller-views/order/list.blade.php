@@ -42,8 +42,7 @@
                                                                 ->where(['seller_is'=>'seller'])
                                                                 ->where(['seller_id'=>$sellerId])
                                                                 ->where(['order_status'=>'pending'])
-                                                                ->count()
-                                            }}
+                                                                ->count()}}
                                         </span>
                                     </div>
                                     <div class="mt-2">

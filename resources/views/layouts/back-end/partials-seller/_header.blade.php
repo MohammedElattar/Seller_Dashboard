@@ -47,7 +47,7 @@
 
             <!-- Secondary Content -->
             <div class="navbar-nav-wrap-content-right"
-                style="{{Session::get('direction') === "rtl" ? 'margin-left:unset; margin-right: auto' : 'margin-right:unset; margin-left: auto'}}">
+                 style="{{Session::get('direction') === "rtl" ? 'margin-left:unset; margin-right: auto' : 'margin-right:unset; margin-left: auto'}}">
                 <!-- Navbar -->
                 <ul class="navbar-nav align-items-center flex-row">
 
@@ -175,7 +175,7 @@
                                                  @endif
                                         </div>
                                         <div class="media-body">
-                                            @if(auth('seller')->user())
+                                              @if(auth('seller')->user())
                                             <span class="card-title h5">{{auth('seller')->user()->f_name}}</span>
 
                                             <span class="card-text">{{auth('seller')->user()->email}}</span>

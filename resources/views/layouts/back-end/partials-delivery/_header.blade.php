@@ -1,5 +1,20 @@
+<style>
+.dropdown-toggle:not(.dropdown-toggle-empty)::after {
+    margin-left: -5px;
+    margin-bottom: -2px;
+}
+input:focus,.custom-select:focus, .form-control:focus{
+    border:1px solid #EB7F25 !important;
+    box-shadow:none;
+}
+    button:hover,a:hover{
+        filter: drop-shadow(2px 4px 6px #EB7f25);
+    }
+</style>
+
+
 <div id="headerMain" class="d-none">
-    <header id="header" style="background-color: #041562"
+    <header id="header" style="background-color:  #05a165"
             class="navbar navbar-expand-lg navbar-fixed navbar-height navbar-flush navbar-container navbar-bordered">
         <div class="navbar-nav-wrap">
             <div class="navbar-brand-wrapper">
@@ -32,10 +47,10 @@
                 <!-- Navbar Vertical Toggle -->
                 <button type="button" class="js-navbar-vertical-aside-toggle-invoker close mr-3">
                     <i class="tio-first-page navbar-vertical-aside-toggle-short-align" data-toggle="tooltip"
-                       data-placement="right" title="Collapse"></i>
+                       data-placement="right"  style="color:#fff;" title="Collapse"></i>
                     <i class="tio-last-page navbar-vertical-aside-toggle-full-align"
                        data-template='<div class="tooltip d-none d-sm-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
-                       data-toggle="tooltip" data-placement="right" title="Expand"></i>
+                       data-toggle="tooltip" style="color:#fff;" data-placement="right" title="Expand"></i>
                 </button>
                 <!-- End Navbar Vertical Toggle -->
                 <div class="d-none d-md-block">
@@ -53,7 +68,7 @@
 
                     <li class="nav-item d-none d-sm-inline-block">
                         <div class="hs-unfold">
-                            <div style="background:white;padding: 2px;border-radius: 5px;">
+                            <div style="background:white;padding: 5px;border-radius: 5px;">
                                 @php( $local = session()->has('local')?session('local'):'en')
                                 @php($lang = \App\Model\BusinessSetting::where('type', 'language')->first())
                                 <div

@@ -1,10 +1,10 @@
-@php($cat_exist = true)
 @extends('layouts.front-end.app')
 
 @section('title',\App\CPU\translate('Seller Apply'))
 
 @push('css_or_js')
-
+<link href="{{asset('public/assets/back-end')}}/css/select2.min.css" rel="stylesheet"/>
+<link href="{{asset('public/assets/back-end/css/croppie.css')}}" rel="stylesheet">
 <meta name="csrf-token" content="{{ csrf_token() }}">
   <style>
         #map {
@@ -93,7 +93,7 @@
                                               <option value="{{old('subscription')}}" selected disabled>---{{\App\CPU\translate('Select')}}---</option>
                                             @foreach($subscriptions as $subscription)
                                                 <option value="{{$subscription['id']}} {{old('name')==$subscription['id']? 'selected': ''}}">
-                                                    {{$subscription['name']}}  ||  Price:{{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($subscription['value']))}}
+                                                    {{$subscription['name']}}  ||  Price:{{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($subscription['value']))}} 
                                                 </option>
                                             @endforeach
                                         </select>
@@ -108,7 +108,7 @@
                                     <textarea name="shop_address" class="form-control" id="shop_address"rows="1" placeholder="{{\App\CPU\translate('shop_address')}}">{{old('shop_address')}}</textarea>
                                 </div>
                             </div>
-
+                           
                             <div class="">
                                 <div class="pb-1">
                                     <center>
@@ -213,7 +213,7 @@
                                                 {{\App\CPU\translate('terms_and_condition')}}
                                             </a></label>
                                     </div>
-
+    
                                 </div>
                             </div>
                             <button type="submit" style="background-color:#ffc0cb!important;color:black" class="btn btn-primary btn-user btn-block" id="apply" disabled>{{\App\CPU\translate('Apply')}} {{\App\CPU\translate('Shop')}} </button>
